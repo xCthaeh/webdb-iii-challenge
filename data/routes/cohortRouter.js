@@ -60,4 +60,19 @@ router.put("/:id", (req, res) => {
   }
 });
 
+router.post("/", (req, res) => {
+  const cohort = req.body;
+  if (cohort.name && cohort.track) {
+    db.place(cohort)
+      .then(() => {
+        res.status(201).json(cohort);
+      })
+      .catch(() => {
+        res
+          .status(500)
+          .json({ error: "Couldn't add the Cohort to the database " });
+      });
+  }
+});
+
 module.exports = router;
