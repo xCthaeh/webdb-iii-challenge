@@ -43,4 +43,19 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const student = req.body;
+  db.place(student)
+    .then(student => {
+      res
+        .status(201)
+        .json({ message: "Student successfully added to the database" });
+    })
+    .catch(() => {
+      res.status(500).json({
+        error: "Could not add the student to the database. Please try again."
+      });
+    });
+});
+
 module.exports = router;
