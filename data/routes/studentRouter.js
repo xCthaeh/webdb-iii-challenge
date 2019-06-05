@@ -28,3 +28,19 @@ router.get("/:id", (req, res) => {
       });
   }
 });
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const student = req.body;
+  db.alter(id, student)
+    .then(() => {
+      res.status(201).json({ message: "Student successfully updated. Woo!!" });
+    })
+    .catch(() => {
+      res.status(500).json({
+        error: "Something went wrong, Could not update the student :("
+      });
+    });
+});
+
+module.exports = router;
