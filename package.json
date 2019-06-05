@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node-dev api.js"
+    "start": "node-dev"
   },
   "repository": "https://github.com/xCthaeh/webdb-iii-challenge.git",
   "author": "Alyssa Hatfield <xcthaeh@gmail.com>",
