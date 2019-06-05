@@ -58,4 +58,18 @@ router.post("/", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  db.clear(id)
+    .then(() => {
+      res.status(202).json({ message: "Student successfully removed" });
+    })
+    .catch(() => {
+      res.status(500).json({
+        error:
+          "An error occurred while trying to remove the student. Please try again."
+      });
+    });
+});
+
 module.exports = router;
