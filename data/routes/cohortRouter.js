@@ -44,5 +44,20 @@ router.get("/:id/students", (req, res) => {
   }
 });
 
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const cohort = req.body;
+  if (id && cohort.name && cohort.track) {
+    db.alter(id, cohort)
+      .then(() => {
+        res.status(201).json({ message: "Cohort successfully updated! Woo!" });
+      })
+      .catch(() => {
+        res.status(500).json({
+          error: "Something went wrong, could not update the cohort :("
+        });
+      });
+  }
+});
 
 module.exports = router;
