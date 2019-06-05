@@ -75,4 +75,20 @@ router.post("/", (req, res) => {
   }
 });
 
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  if (id) {
+    db.clear(id)
+      .then(() => {
+        res.json({ message: "Cohort successfully removed" });
+      })
+      .catch(() => {
+        res.status(500).json({
+          error:
+            "An error occurred while trying to remove the Cohort. Please try again."
+        });
+      });
+  }
+});
+
 module.exports = router;
