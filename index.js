@@ -2,8 +2,8 @@ const express = require("express");
 const helmet = require("helmet");
 const logger = require("morgan");
 const server = express();
-const cohortRouter = require("./data/routes/cohortRouter");
-const studentRouter = require("./data/routes/studentRouter");
+const cohortRouter = require("./routes/cohortRouter");
+const studentRouter = require("./routes/studentRouter");
 const port = process.env.port || 8000;
 
 server.use(helmet(), logger("tiny"), express.json());
